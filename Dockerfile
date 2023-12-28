@@ -5,7 +5,7 @@ FROM openjdk:17
 WORKDIR /app
 
 # Copia el JAR
-COPY ../target/lciii-scaffolding-0.0.1-SNAPSHOT.jar app.jar
+COPY target/lciii-scaffolding-0.0.1-SNAPSHOT.jar app.jar
 
 # Comando de entrada para ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "app.jar"]
