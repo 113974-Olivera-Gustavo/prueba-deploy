@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  prueba_docker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - prueba_docker_db
+
+    environment:
+      - DATABASE_URL=jdbc:postgresql://prueba_docker_db:5432/prueba_docker_db
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=gustavo10
+
+  prueba_docker_db:
+    container_name: prueba_docker_db
+    image: postgres:15.4
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USERNAME=postgres  # Cambiado de POSTGRES_USERNAME a POSTGRES_USER
+      - POSTGRES_PASSWORD=gustavo10
+      - POSTGRES_DB=prueba_docker_db
